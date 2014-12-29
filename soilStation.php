@@ -1,10 +1,12 @@
 <?php
 $taskLocation = realpath(dirname(__FILE__));
+chdir($taskLocation);
+include ("config.inc.php");
 chdir($taskLocation . "/data");
 // create a new cURL resource
 $ch = curl_init();
 // set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, "http://192.168.1.36");
+curl_setopt($ch, CURLOPT_URL, RASPBERRY_PI);
 
 curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 
