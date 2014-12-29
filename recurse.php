@@ -23,7 +23,7 @@ $folder_count = count($folder_list);
 for ($floop = 0; $floop < $folder_count; $floop++) {
     foreach (current($folder_list) as $file_to_be_processed) {
         $full_file_path = key($folder_list) . "/" . $file_to_be_processed . "\n";
-        echo "DEBUG: line#" . __LINE__ . " - File being processed is:" . $full_file_path . "\n";
+        //echo "DEBUG: line#" . __LINE__ . " - File being processed is:" . $full_file_path . "\n";
         $file_contents = file(trim($full_file_path));
         // Now process the line in the file
         // by the time we get only files that need to be processed are in our arry
@@ -33,9 +33,9 @@ for ($floop = 0; $floop < $folder_count; $floop++) {
             $values_in_line_array = explode(",", trim($line_in_file));
             //  print "DEBUG: {$values_in_line_array[0]}\n";
             if (strtotime($values_in_line_array[0]) < $lastupdated_seconds) {
-                echo "DEBUG: is past \n";
+              //  echo "DEBUG: is past \n";
             } else {
-                echo "DEBUG: is not past \n";
+               // echo "DEBUG: is not past \n";
 
                 $params = array("date" => $values_in_line_array[0],
                     "air_temp" => $values_in_line_array[1],
@@ -103,7 +103,7 @@ function httpPost($url, $params) {
         $postData .= $k . '=' . $v . '&';
     }
     rtrim($postData, '&');
-    print $postData;
+  //  print $postData;
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL, $url);
